@@ -10,7 +10,7 @@ const File = require("../models/File");
 router.post("/generate-upload-url", authMiddleware, async (req, res) => {
   try {
     const { fileName, fileType } = req.body;
-    console.log("Received:", fileName, fileType); // sanity check body arrived
+    console.log("Received:", fileName, fileType);
 
     const key = `users/${req.user.userId}/${uuidv4()}-${fileName}`;
 
@@ -69,7 +69,7 @@ router.get('/:id/download-url', authMiddleware, async (req, res) => {
     })
 
     const downloadUrl = await getSignedUrl(s3, command, {expiresIn: 300});
-    res.json(downloadUrl);
+    res.json({downloadUrl});
 })
 
 router.delete('/:id', authMiddleware, async (req, res) => {

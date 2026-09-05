@@ -32,6 +32,7 @@ const Dashboard = () => {
   }, []);
 
   const handleUploadComplete = (newFile) => {
+    console.log("newFile received in Dashboard:", newFile);
     setFiles((prev) => [...prev, newFile]);
   };
 

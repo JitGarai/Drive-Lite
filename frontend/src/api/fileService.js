@@ -23,7 +23,7 @@ export async function uploadFile(file, folderId = null, onProgress){
         }
     })
 
-    const{ savedFies } = await axios.post(`${API_BASE}/files`, {
+    const{ data: savedFies } = await axios.post(`${API_BASE}/files`, {
         key,
         originalName: file.name,
         mimeType: file.type,
@@ -46,5 +46,5 @@ export async function getDownloadUrl(fileId){
     return data.downloadUrl
 }
 export async function deleteFile(fileId) {
-    await axios.delete(`${API_BASE}/file/${fileId}`);
+    await axios.delete(`${API_BASE}/files/${fileId}`);
 }
