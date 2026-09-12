@@ -48,3 +48,23 @@ export async function getDownloadUrl(fileId){
 export async function deleteFile(fileId) {
     await axios.delete(`${API_BASE}/files/${fileId}`);
 }
+
+export async function shareFile(fileId, email) {
+  const { data } = await axios.post(`${API_BASE}/files/${fileId}/share`, { email });
+  return data;
+}
+
+export async function unshareFile(fileId, userId) {
+  const { data } = await axios.delete(`${API_BASE}/files/${fileId}/share/${userId}`);
+  return data;
+}
+
+export async function togglePublic(fileId, isPublic) {
+  const { data } = await axios.patch(`${API_BASE}/files/${fileId}/public`, { isPublic });
+  return data;
+}
+
+export async function listSharedWithMe() {
+  const { data } = await axios.get(`${API_BASE}/files/shared-with-me`);
+  return data;
+}

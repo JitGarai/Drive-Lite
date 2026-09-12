@@ -54,7 +54,7 @@ const fileSchema = new mongoose.Schema({
     },
 },
 {
-    timeseries: true
+    timestamps: true
 });
 
 module.exports = mongoose.model('File', fileSchema)
